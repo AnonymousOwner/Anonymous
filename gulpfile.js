@@ -4,8 +4,8 @@ const autoprefixer = require('gulp-autoprefixer');
 const csslint = require('gulp-csslint');
 
 gulp.task('default', ['html', 'css']);
-
-gulp.task('html', () => gulp.src('src/index.html')
+//'src/index.html'
+gulp.task('html', () => gulp.src('AHAB.html')
   .pipe(htmltidy())
   .pipe(gulp.dest('build')));
 
