@@ -1,0 +1,416 @@
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color:lightgrey;
+  color: black;
+  text-align: center;
+}
+.dsgvo-title{
+  font-size: 30px;
+  display: block;
+}
+
+.entry-content{
+  font-size: 13px;
+}
+.popover{
+  max-width: 500px;
+}
+.wrapper {
+  overflow: hidden;
+}
+.ambiguity-tool {
+  position: absolute;
+  background: none;
+  /* Make sure events are propagated to the JointJS element so, e.g. dragging works.*/
+  pointer-events: none;
+  -webkit-user-select: none;
+  padding: 5px;
+  box-sizing: border-box;
+  z-index: 2;
+}
+#paper-multiple-papers-small > div > button {
+  display: none;
+}
+#paper-stencil-panel > div > button {
+  display: none;
+}
+#paper-multiple-papers > div > button {
+  display: none;
+}
+.ambiguity-tool button {
+  /* Enable interacting with inputs only. */
+  pointer-events: auto;
+  z-index: 2;
+}
+.ambiguity-tool button.delete {
+  color: black;
+  border: none;
+  background-color: red;
+  border-radius: 22px;
+  width: 15px;
+  height: 15px;
+  line-height: 15px;
+  text-align: middle;
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  padding: 0;
+  margin: 0;
+  font-weight: bold;
+  cursor: pointer;
+  display: none;
+}
+.ambiguity-tool button.delete:hover {
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+}
+.ambiguity-tool button.copy {
+  color: white;
+  border: none;
+  background-color: blue;
+  border-radius: 20px;
+  width: 15px;
+  height: 15px;
+  line-height: 15px;
+  text-align: middle;
+  position: absolute;
+  top: -15px;
+  left: 5px;
+  padding: 0;
+  margin: 0;
+  font-weight: bold;
+  cursor: pointer;
+  display: none;
+}
+.ambiguity-tool button.copy:hover {
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+}
+.ambiguity-tool button.flip {
+  color: red;
+  border: none;
+  background-color: yellow;
+  border-radius: 22px;
+  width: 15px;
+  height: 15px;
+  line-height: 15px;
+  text-align: middle;
+  position: absolute;
+  top: -15px;
+  left: 20px;
+  padding: 0;
+  margin: 0;
+  font-weight: bold;
+  cursor: pointer;
+  display: none;
+}
+.ambiguity-tool button.flip:hover {
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+}
+.joint-element * {
+  html: true;
+}
+#draggable {
+  position: absolute;
+  z-index: 9;
+  background-color: #f1f1f1;
+  border: 1px solid #d3d3d3;
+  text-align: center;
+  display: none;
+  font-size:9px;
+}
+#draggableclosebox {
+  width: 50px;
+  padding: 0px;
+  cursor: pointer;
+  z-index: 10;
+  background-color: #d9534f;
+  color: #fff;
+  float: left;
+  font-size:10px;
+}
+
+#draggableheader {
+  margin-left: 50px;
+  padding: 0px;
+  cursor: move;
+  z-index: 10;
+  background-color: #343a40!important;
+  color: #fff;
+  font-size:10px;
+}
+#comparable {
+  position: absolute;
+  z-index: 9;
+  background-color: #f1f1f1;
+  border: 1px solid #d3d3d3;
+  text-align: center;
+  display: none;
+  font-size:9px;
+}
+#comparableclosebox {
+  width: 50px;
+  padding: 0px;
+  cursor: pointer;
+  z-index: 10;
+  background-color: #d9534f;
+  color: #fff;
+  float: left;
+  font-size:10px;
+}
+#comparableheader {
+  margin-left: 50px;
+  padding: 0px;
+  cursor: move;
+  z-index: 10;
+  background-color: #343a40!important;
+  color: #fff;
+  font-size:10px;
+}
+#floatingModelPanel{
+  position: absolute;
+  top: 250px;
+  z-index: 10;
+  background-color: #f1f1f1;
+  border: 1px solid #d3d3d3;
+  display: block;
+  font-size:9px;
+  text-align: left;
+  border: solid 1px #343a40; 
+  width: 260px; 
+  font-size: 10px;
+}
+#floatingModelPanelheader {
+  /* margin-left: 5%; */
+
+  cursor: move;
+  z-index: 10;
+  background-color: #343a40!important;
+  color: #fff;
+  font-size:9px;
+
+  text-align: center;
+  padding: 1px;
+
+}
+
+#floatingModelPanelclosebox {
+  width: 50px;
+  padding: 1px; 
+  cursor: pointer;
+  z-index: 10;
+  background-color: #d9534f;
+  color: #fff;
+  /* float: left; */
+  font-size:9px;
+  text-align: center;
+}
+
+#threeButton {
+  position: absolute;
+  left: 450px;
+  z-index: 9;
+  background-color: #f1f1f1;
+  border: 1px solid #d3d3d3;
+  text-align: left;
+  display: block;
+  font-size:9px;
+  width: auto;
+}
+#threeButtonclosebox {
+  width: 50px;
+  padding: 1px;
+  cursor: pointer;
+  z-index: 10;
+  background-color: #d9534f;
+  color: #fff;
+  text-align: center;
+  font-size:9px;
+}
+
+#threeButtonheader {
+  cursor: move;
+  z-index: 10;
+  background-color: #343a40!important;
+  /* 292b2c*/
+  color: #fff;
+  text-align: center;
+  font-size:9px;
+  padding: 1px;
+}
+#CapDisplay {
+ 
+  overflow: auto;
+  font-size:15px;
+  padding:2px;
+  -o-user-select: text;
+  -webkit-touch-callout: text; /* iOS Safari */
+  -webkit-user-select: text; /* Safari */
+  -khtml-user-select: text; /* Konqueror HTML */
+  -moz-user-select: text; /* Old versions of Firefox */
+  -ms-user-select: text; /* Internet Explorer/Edge */
+  user-select: text; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+}
+#legalTextPanel {
+  top: 250px;
+  position: absolute;
+  z-index: 9;
+  background-color: #f1f1f1;
+  border: 1px solid #d3d3d3;
+  text-align: center;
+  display: block;
+  font-size:10px;
+  width: 450px;
+  /*36vw;*/
+  height: auto;
+}
+option[name="legalTextTitle"]{
+  font-size: 14px;
+}
+#legalTextPanelclosebox {
+  width: 50px;
+  padding: 1px;
+  cursor: pointer;
+  z-index: 10;
+  background-color: #d9534f;
+  color: #fff;
+  /* float: left; */
+  text-align: center;
+  font-size:9px;
+}
+#legalTextPanelheader {
+  padding: 1px;
+  cursor: move;
+  z-index: 10;
+  background-color: #343a40!important;
+  color: #fff;
+  text-align: center;
+  font-size:9px;
+}
+
+#shapesBox {
+  position: absolute;
+  top:15px; 
+  z-index: 9;
+  background-color: #f1f1f1;
+  border: 1px solid #d3d3d3;
+  text-align: center;
+  display: block;
+  font-size:12px;
+  border:solid 1px #343a40; 
+  width:260px;
+}
+#shapesBoxclosebox {
+  width: 50px;
+  padding: 1px;
+  cursor: pointer;
+  z-index: 10;
+  background-color: #d9534f;
+  color: #fff;
+  font-size:9px;
+  text-align: center;
+}
+#shapesBoxheader {
+  padding: 1px; 
+  cursor: move;
+  z-index: 10;
+  background-color: #343a40!important;
+  color: #fff;
+  font-size:9px;
+  text-align: center;
+}
+
+#floatingLegend {
+  position: absolute;
+  z-index: 9;
+  background-color: #f1f1f1;
+  border: 1px solid #d3d3d3;
+  text-align: center;
+  display: none;
+  font-size:12px;
+}
+#floatingLegendheader {
+  padding: 6x;
+  cursor: move;
+  z-index: 10;
+  background-color: #343a40!important;
+  color: #fff;
+  font-size:10px;
+  display: none;
+}
+#heatmap_legend {
+  background-color: white;
+  border-radius: 5px;
+  width: inherit;
+  height: inherit;
+}
+
+/* #threeButton {
+  position: absolute;
+  left: 450px;
+  z-index: 9;
+  background-color: #f1f1f1;
+  border: 1px solid #d3d3d3;
+  text-align: left;
+  display: block;
+  font-size:9px;
+  width: auto;
+} */
+
+#heatmapheader {  
+  padding: 1px;
+  margin: 2%;
+  cursor: move;
+  z-index: 10;
+  text-align: center;
+  font-size:9px;
+  width: auto;
+}
+#heatmaphelp{
+  font-size: 9px;
+  background-color: #007bff;
+  width:50px; 
+  text-align: center;
+}
+.importWidth{
+  width: 450px;
+}
+#exportheader{
+  padding: 2%;
+  margin: 2%;
+  cursor: move;
+  z-index: 10;
+  text-align: left;
+  font-size:10px;
+  width: auto;
+}
+#exporthelp{
+  font-size: 10px;
+  background-color: #007bff;
+  border: 1px whitesmoke solid ;
+  margin-right: 10%;
+}
+
+#helpLink{
+  font-size: 10px;
+  color: #fff;
+  text-align: center;
+}
+#helpButton
+{  
+  width:50px;
+  height: 16px;
+  text-align: center;
+  padding: 1px;
+}
+
+
+
