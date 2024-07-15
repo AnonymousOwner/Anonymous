@@ -6,12 +6,15 @@
   "directories": {
     "test": "mocha test"
   },
-  "removed dependecies": {
+  "removed dependecies":{
     "chai": "^5.1.1",
     "chai-dom": "^1.12.0",
     "chai-http": "^5.0.0",
+
     "sinon": "^18.0.0",
-    "sinon-chai": "^3.7.0"
+    "sinon-chai": "^3.7.0",
+
+    "nightmare": "^3.0.2"
   },
   "dependencies": {
     "@popperjs/core": "^2.11.8",
@@ -19,6 +22,7 @@
     "bootstrap": "^5.3.3",
     "braces": "^3.0.3",
     "casper": "^0.1.1",
+    
     "downloadjs": "^1.4.7",
     "express": "^4.19.2",
     "html2canvas": "^1.4.1",
