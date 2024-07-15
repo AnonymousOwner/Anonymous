@@ -16,6 +16,12 @@
     <link rel="stylesheet" href="documentation/js/jquery/jquery-ui-1.13.0.custom/jquery-ui.css" />
 
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <!--Adding this script so that github opens this file as index.html-->
+    <script>
+      if (window.location.pathname === '/' || window.location.pathname === '/Anonymous/') {
+          window.location.href = window.location.origin + '/Anonymous/AHAB.html';
+      }
+    </script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script><!--added for legal text-->
     <link rel="stylesheet" href="css/joint.css" />
     <link rel="stylesheet" href="css/ahab.css" />
@@ -57,6 +63,7 @@
       }
     </style>
 
+    
 
     <!-- Custom styles for this template -->
     <!--<link href="sticky-footer-navbar.css" rel="stylesheet">-->
@@ -526,12 +533,8 @@
       <div class="col-xl-4 bd-sidebar"></div> <!--right sidebar-->
     </div>
   </div>
-  <!-- Footer -->
-  <footer class="footer mt-auto py-1">
-      <div class="container">
-        <span class="text-muted">Created by: Aaron Massey et al.</span>
-      </div>
-    </footer> 
+  <!-- Footer Removed to stay Anonymous-->
+  
   <!--<footer>
     <div class="row">
       <div class="mx-auto">Created by: Aaron Massey et al.</div>
