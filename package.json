@@ -6,14 +6,13 @@
   "directories": {
     "test": "mocha test"
   },
-  "removed dependecies":{
+  "removed dependecies": {
     "chai": "^5.1.1",
     "chai-dom": "^1.12.0",
     "chai-http": "^5.0.0",
-
     "sinon": "^18.0.0",
     "sinon-chai": "^3.7.0",
-
+    "puppeteer": "^22.13.0",
     "nightmare": "^3.0.2"
   },
   "dependencies": {
@@ -22,7 +21,6 @@
     "bootstrap": "^5.3.3",
     "braces": "^3.0.3",
     "casper": "^0.1.1",
-    
     "downloadjs": "^1.4.7",
     "express": "^4.19.2",
     "html2canvas": "^1.4.1",
@@ -36,7 +34,6 @@
     "nyc": "^17.0.0",
     "popper": "^1.0.1",
     "popper.js": "^1.16.1",
-    "puppeteer": "^22.13.0",
     "rijs": "^0.9.1",
     "rijs.resdir": "^1.4.4",
     "selenium-webdriver": "^4.22.0",
@@ -44,21 +41,28 @@
   },
   "devDependencies": {
     "chromedriver": "*",
+    "del": "^7.1.0",
     "gulp": "^5.0.0",
     "gulp-autoprefixer": "^9.0.0",
     "gulp-csslint": "^1.0.1",
+    "gulp-cssmin": "^0.2.0",
+    "gulp-htmlmin": "^5.0.1",
     "gulp-htmltidy": "^0.2.4",
     "gulp-jshint": "^2.1.0",
+    "gulp-stylelint": "^13.0.0",
+    "gulp-terser": "^2.1.0",
     "jsdoc": "^4.0.3",
     "karma": "^6.4.3",
     "mocha": "^10.6.0",
     "mochawesome": "^7.1.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "stylelint": "^16.7.0",
+    "stylelint-config-standard": "^36.0.1",
     "zombie": "^6.1.4"
   },
   "scripts": {
-    "start": "node index.js",
+    "start": "node src/index.js",
     "test": "mocha test/tests.js",
     "coverage": "nyc npm run test",
     "coverage_in_html": "nyc --reporter=html npm run test"
