@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="css/bootstrap.css" />
+</head>
+<body>
+    <div class="container">
+        <div id="Home" class="tabcontent" style="display: block;">
+            <H1> Welcome to the Ambiguity Heuristics Analysis Builder (AHAB) </H1>
+            <p>Just like Captain Ahab from Mehville's <i>Moby Dick</i> was build to search for the great white whale of legal ambiguity compliance.</p>
+            <p>Relentless, AHAB seeks to capture, and process legal ambiguities much like Mehville's whalers captured and processed whales in the 18th Century for their oil. The risks for the whalers were great, and so are the risks for companies that wish to be data controllers and processors in the 21st century.
+            </p>
+            <h4> Modeling Tools </h4>
+            <p> The Modeling Tools tab supports importing legal texts, and then modeling those same texts based on Massey's "A strategy for addressing ambiguity in regulatory requirements." Please see the "Help on Commands" link on the Modeling Tab for any user concerns.
+            </p>
+            <h1>End User Guide to functions in AHAB</h1>
+
+            <h3>Changing the Canvas Color</h3>
+
+            <p class=MsoNormal><i style='mso-bidi-font-style:normal'>Default: Light Gray<o:p></o:p></i></p>
+
+            <p class=MsoNormal>In the Modeling Tools Tab: Find the canvas color drop down on the right of the screen (below the Tab values), select a value in the Canvas Color dropdown.<span style='mso-spacerun:yes'>  </span>The canvas should change to the color selected</p>
+
+            <h3>Load HTML Files</h3>
+
+            <p class=MsoNormal><i style='mso-bidi-font-style:normal'>Default: Not
+Applicable<o:p></o:p></i></p>
+
+            <p class=MsoNormal>In order to load an HTML file from the <i style='mso-bidi-font-style:normal'>HTML files for import </i>file in the directory, find the <u>Load/Save
+Text Files</u> panel.<span style='mso-spacerun:yes'>  </span>Select the button labeled <b style='mso-bidi-font-weight:normal'>Import</b>, a pop-up box with the directory structure will appear. Select the <i style='mso-bidi-font-style:
+normal'>HTML files for import</i> folder, and then select one of the HTML files in the folder and click the <b style='mso-bidi-font-weight:normal'>Open</b> button.<span style='mso-spacerun:yes'>  </span>The legal text will appear in the panel that defaults to <b style='mso-bidi-font-weight:normal'>LEGAL TEXT GOES HERE.<o:p></o:p></b></p>
+
+            <p class=MsoNormal>It is now possible to highlight the legal text and copy it into the Regulatory Text box (this is covered in the <u>Capture Legal Text</u> function section below).</p>
+
+            <h3>Load/Save Ambiguity Models </h3>
+
+            <p class=MsoNormal><i style='mso-bidi-font-style:normal'>Default: Not Applicable<o:p></o:p></i></p>
+
+            <h4>Loading</h4>
+
+            <p class=MsoNormal>In order to load a model from a JSON file, select the <b style='mso-bidi-font-weight:normal'>Import</b> button from the <u>Load/Save
+Model Files</u> panel. A pop-up box will appear.<span style='mso-spacerun:yes'>  </span>Select the <b style='mso-bidi-font-weight:
+normal'>JSON folder</b> from the file structure.<span style='mso-spacerun:yes'>  </span>Once the folder has opened, select one of the
+                <b style='mso-bidi-font-weight:normal'>.json</b> files by left clicking, and hitting the ‘Open’ button.<span style='mso-spacerun:yes'>  </span>The model file should then load in the canvas.</p>
+
+            <h4>Saving/Exporting</h4>
+
+            <p class=MsoNormal>In order to save a model to a JSON file, select the <b style='mso-bidi-font-weight:normal'>Export </b>button from the <u>Load/Save
+Model Files</u> panel. A pop-up box will appear with a predefined format for the file.<span style='mso-spacerun:yes'>  </span>The format is as follows:</p>
+
+            <p class=MsoNormal>Model Name: <i style='mso-bidi-font-style:normal'>Regulatory
+Text Field + Timestamp (Year, Month, Date – Time) + Perspective + <span
+class=SpellE><span class=GramE>version.json</span></span></i></p>
+
+            <p class=MsoNormal>The file will be saved into your browser’s predefined download folder. You will need to move the file into the <b style='mso-bidi-font-weight:
+normal'>JSON </b>folder in your copy of the repository.</p>
+
+            <h2>Model Palette Functions</h2>
+
+            <h4>Capture Legal Text</h4>
+
+            <p class=MsoNormal>As discussed in the section <b style='mso-bidi-font-weight:
+normal'>Load HTML Files</b> above, once a legal text is loading into the panel that is labeled <b style='mso-bidi-font-weight:normal'>LEGAL TEXT GOES HERE</b> as a default, you may begin to highlight text that will be copied into the <i style='mso-bidi-font-style:normal'>Regulatory Text</i> field inside the Model Palette. </p>
+
+            <p class=MsoNormal>To copy text into the <i style='mso-bidi-font-style:normal'>Regulatory
+Text <span class=GramE>Field</span></i> hold the left click and highlight the text.
+                <span style='mso-spacerun:yes'>  </span>Once done highlighting the text, click the <b style='mso-bidi-font-weight:normal'>Copy Text</b> button and the data will be copied over into the <i style='mso-bidi-font-style:normal'>Regulatory
+Text</i> field to the right.</p>
+
+            <h4>Modelling</h4>
+
+            <h5>Add an Ambiguity</h5>
+
+            <p class=MsoNormal>The fields for the Ambiguity are: </p>
+            <ul>
+                <li>Unique Artifact ID (should be auto-generated)</li>
+                <li>Regulatory Text ID (usually the HTML file designation e.g. <i>USCCPASection2</i>)</li>
+                <li>Perspective (values currently are: Eric, Aaron, Sepideh, Amin, Alden)</li>
+                <li>Regulatory Text (Copied by <b>Copy Text</b> button)</li>
+                <li>Regulatory Reference (values: Partial Phrase, Phrase, Sentence, Full Text)</li>
+                <li>Notes (free text field)</li>
+                <li>Ambiguity Type (values: Lexical, Syntactic, Semantic, Vagueness, Incompleteness, Referential, Other)</li>
+                <li>Severity (values: 1-5)</li>
+                <li>Intentionality (values: Yes or No)</li>
+                <li>Implementability (values: Yes or No)</li>
+            </ul>
+
+            NB: Link Weight is not needed for Ambiguities at this time.</p>
+
+            <p class=MsoNormal>Once all of the above fields contain values, select the <b style='mso-bidi-font-weight:normal'>Add</b> button from the <u>Modeling</u> section.
+                <span style='mso-spacerun:yes'>  </span>Once the function is selected (the field ‘Function Selected’ should show the word <b style='mso-bidi-font-weight:
+normal'>add</b>), you can right click anywhere on the canvas to create the ambiguity.
+                <span style='mso-spacerun:yes'>  </span>The Ambiguity values (see above) will clear <b style='mso-bidi-font-weight:normal'>except</b> for the Unique Artifact ID, Regulatory Text ID, and perspective drop down.</p>
+            <h5>Delete an Ambiguity</h5>
+
+            <p class=MsoNormal>To delete an Ambiguity, left click on the item, and click the button labeled <b style='mso-bidi-font-weight:normal'>delete</b>.<span style='mso-spacerun:yes'>  </span>The ambiguity and all links connected to the Ambiguity will be deleted.<span style='mso-spacerun:yes'>  </span><b style='mso-bidi-font-weight:normal'>This cannot be undone!</b> Multiple ambiguities can be deleted by left clicking and selecting the items for deletion. </p>
+
+            <p class=MsoNormal><b style='mso-bidi-font-weight:normal'>IT IS RECOMMENDED YOU
+EXPORT MODEL FILES EARLY AND OFTEN!<o:p></o:p></b></p>
+
+            <h5>Link an Ambiguity</h5>
+
+            <p class=MsoNormal>To link an ambiguity with another element (currently ambiguities and terminals) select the first ambiguity by left clicking the ambiguity.
+                <span style='mso-spacerun:yes'>  </span>Then left click another element.
+                <span style='mso-spacerun:yes'>  </span>Now, press the <b style='mso-bidi-font-weight:normal'>link</b> button. A link will be created, with a cardinality from the first element to the second element.<span style='mso-spacerun:yes'>  </span></p>
+
+            <h5>Creating Terminals</h5>
+
+            <p class=MsoNormal>After creating ambiguities, you will want the start and stop terminals for the model. They are created by pressing the <b style='mso-bidi-font-weight:
+normal'>terminals</b> button.<span style='mso-spacerun:yes'>  </span>Once created, you will want to link the terminals to the ambiguities via the link functionality.<span style='mso-spacerun:yes'>  </span>Terminals can be deleted and linked to, just like ambiguities.</p>
+
+            <h5>Editing Ambiguities</h5>
+
+            <p class=MsoNormal>To edit an ambiguity, select it by left clicking.<span style='mso-spacerun:yes'>  </span>Change the information inside the modeling panel.<span style='mso-spacerun:yes'>  </span>Once the information has changed, please click the <b style='mso-bidi-font-weight:normal'>edit</b> button.<span style='mso-spacerun:yes'>  </span>The ambiguity will be updated to reflect the changes you have made.</p>
+
+            <h4>Strategy</h4>
+
+            <h5>Heatmap Selection</h5>
+
+            <p class=MsoNormal>The heatmap is the visual representation of the various Ambiguity elements (specifically: Implementability, Intentionality, Severity, and Ambiguity Type).<span style='mso-spacerun:yes'>  </span>To see these visual representations, simply select the value from the drop down.<span style='mso-spacerun:yes'>  </span>The canvas elements will change color and a small legend will appear to the left of the model.</p>
+
+            <h2> Academic Citations </h3>
+                <p> </p>
+
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html style="-o-user-select:none;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */"
+>
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!--for legalText autocomplete to work:-->
+    <link rel="stylesheet" href="documentation/js/jquery/jquery-ui-1.13.0.custom/jquery-ui.css" />
+
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script><!--added for legal text-->
+    <link rel="stylesheet" href="css/joint.css" />
+    <link rel="stylesheet" href="css/ahab.css" />
+
+
+    <title> The Ambiguity Heuristics Analysis Builder </title>
+    <style>
+
+      main > .container {
+        padding: 60px 15px 0;
+      }
+
+      .footer {
+        background-color: #f5f5f5;
+      }
+
+      .footer > .container {
+        padding-right: 15px;
+        padding-left: 15px;
+      }
+
+      code {
+        font-size: 80%;
+      }
+
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+
+    <!-- Custom styles for this template -->
+    <!--<link href="sticky-footer-navbar.css" rel="stylesheet">-->
+
+</head>
+
+<body>
+  <header>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" id="navB">
+      <a class="navbar-brand mr-5" href="#">
+        <div class="h4">Welcome to AHAB</div>
+        <div class="h6">The Ambiguity Heuristics Analysis Builder</div>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+
+        <button type="button" class="btn btn-sm btn-dark" > </button>
+        <button type="button" class="btn btn-sm btn-dark" > </button>
+
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a href="documentation.html" target="_blank" class="nav-link">Tutorial</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="#"  id="savePicture" onclick="AHAB.Exporter.savePicture();">Picture </a>
+          </li>
+          <li class="nav-item active">
+            <a href="TextAndAmbiguities.html" style="width:max-content;" target="_blank" class="nav-link" onclick="  AHAB.Exporter.sendDataToAnotherJsFile();">Textual Analysis</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" style="padding-right: 10% ; width:max-content;" href="#"  id="tabView" onclick="AHAB.Exporter.tabularView();">Tabular Output</a>
+          </li>
+
+
+          <!-- <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          </li> -->
+        </ul>
+        <div class="w-100"></div>
+        <form class="form-inline mt-2 mt-md-0 mr-2" style="width: 500px;" >
+          <div class="row custom-file importWidth">
+            <input type="file" id="importGraph" name="importJSONGraph01"
+            class="custom-file-input" aria-describedby="importJSONGraph01Addon">
+            <label class="custom-file-label" for="importJSONGraph01Addon" style="font-size: 16px;">Import Model Files</label>
+          </div>
+          <div class="pl-3 row" style="width:480px">
+          <div class="form-check" >
+            <input type="checkbox" class="form-check-input " value="" id="destructiveImport">
+            <label class="form-check-label" for="destructiveImport" style="color: white;"> Import/Clear Current Model </label>
+          </div>
+          <div class="nav-item active">
+            <a class="nav-link" href="#" style="color: white;"  id="exportGraph" >Export JSON</a>
+          </div>
+          <div class="nav-item active">
+            <a class="nav-link" href="#" style="color: white;"  id="exportLog" >Export Log</a>
+          </div>
+          </div>
+          <!--
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          -->
+        </form>
+      </div>
+    </nav>
+    <!--
+    <div class="row bg-secondary text-white">
+      <div class="col col-sm- pl-5">
+        <img src="img\ahab_small.jpg" class="img-thumbnail float-left" style="margin-right: 20px;">
+        <div class="h1 pt-4">Welcome to AHAB</div>
+        <div class="h3">The Ambiguity Heuristics Analysis Builder</div>
+      </div>
+    </div>-->
+  </header>
+  <div class="container-fluid" id="containermain">
+    <div class="row flex-xl-nowrap">
+      <div class="col-xl-5 bd-sidebar"></div> <!--left part of left sidebar-->
+      <!--<div class="d-none d-xl-block col-xl-2 bd-toc"></div>--><!--right part of left sidebar-->
+
+      <!-- Begin page content -->
+      <main role="main" class="flex-shrink-0">
+        <div class="container">
+        <!--<div class="container-fluid">-->
+          <div class="row">
+            <!--draggableCanvas is used for dragging the shapes from shape panel to canvas-->
+            <div id="draggableCanvas" style="display:none; position:fixed;z-index:100; opacity:.7; pointer-event:none;"></div>
+            <!-- Build a floating window for loading the legal texts -->
+            <div class="col rounded" id="legalTextPanel" style="border: solid 1px #343a40;">
+              <div class='row'>
+                <div class="col-sm-2" id="legalTextPanelclosebox">X</div>
+                <div class="col" id="legalTextPanelheader">Click here to move</div>
+                <div class=" btn-primary" id="helpButton"><a href="documentation.html#LegalTextPanel" target="_blank" id="helpLink">Help</a></div>
+              </div>
+              <!--Load legal Text Button-->
+              <div class="row">
+                <div class="btn-toolbar btn-sm" id="capturer_panel_loadSave">
+                  <div>
+                    <!--Used to have this input type=file for loading legalText
+                    <div class="custom-file m-0" >
+                      <input type="file" id="importLegalText" name="importLegalText" class="custom-file-input" placeholder="Input group example" onchange="AHAB.LegalTextPanel.loadText(event);" aria-describedby="importLegalText01" />
+                      <label class="custom-file-label" for="importLegalText01" style="text-align: left;">Load Legal Text</label>
+                    </div>
+                    -->
+                      <!--
+                      <input class="form-control ui-widget"  type="text" placeholder="Load Legal Text" aria-label="chooseLegalText" id="legalTextTitle" onkeyup="AHAB.LegalTextPanel.legalTextTitleKeyUp();">
+                      <button type="button" class="btn btn-dark" id="chooseLegalTextBtn" onclick="AHAB.LegalTextPanel.loadText();">Choose</button>
+                      -->
+
+
+                    <select class=" btn-sm btn-dark" data-toggle="buttons" id="legalTextTitle" name="legalTextTitle" onchange="AHAB.LegalTextPanel.loadLegalText();" style="width: 300px; margin-top:10px;">
+                      <option class="btn btn-dark active" name="legalTextTitle" value="" selected>Choose Legal Text</option>
+                      <option class="btn btn-dark active" name="legalTextTitle" value="EU_GDPR_Ch3_Art13">EU_GDPR_Ch3_Art13</option>
+                      <option class="btn btn-dark active" name="legalTextTitle" value="EU_GDPR_Ch3_Art17">EU_GDPR_Ch3_Art17</option>
+                      <option class="btn btn-dark active" name="legalTextTitle" value="EU_GDPR_Ch3_Art20">EU_GDPR_Ch3_Art20</option>
+                      <option class="btn btn-dark active" name="legalTextTitle" value="GDPR">GDPR</option>
+                      <option class="btn btn-dark active" name="legalTextTitle" value="VLIS_Ch52_Art59.1-574">VLIS_Ch52_Art59.1-574</option>
+                      <option class="btn btn-dark active" name="legalTextTitle" value="US_ADA_Sec36_Sub211">US_ADA_Sec36_Sub211</option>
+                      <option class="btn btn-dark active" name="legalTextTitle" value="US_CCPA_SEC1and2">US_CCPA_SEC1and2</option>
+                      <option class="btn btn-dark active" name="legalTextTitle" value="US_CDT_Privacy_Discussion_Draft">US_CDT_Privacy_Discussion_Draft</option>
+                      <option class="btn btn-dark active" name="legalTextTitle" value="US_HIPAA_170.302">US_HIPAA_170.302</option>
+                      <option class="btn btn-dark active" name="legalTextTitle" value="US_HIPAA_170.315">US_HIPAA_170.315</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <!--Highlight and Capture-->
+              <div class="row">
+                <div class="col-xl">
+                  <form class="form-inline">
+                    <select id="highlight" class="custom-select my-1 mr-sm-1" name="highlight" onchange="AHAB.Highlight.highlightOneNode($('#capDisplay'))">
+                      <option value="0">Highlight Off</option>
+                      <option value="1">Highlight All</option>
+                      <option value="2">Highlight Selected</option>
+                    </select>
+                    <button type="button" class="btn btn-dark" id="copyLegalText" onclick="AHAB.LegalTextPanel.selectText();">Capture Text</button>
+                  </form>
+                  <div id="CapDisplay" class="CapDisplay pr-1" display='block' align="left">
+                    <h1>LEGAL TEXT GOES HERE</h1>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <!--(heatmap button) (input readonly) (three button add user) ([(canvas, merge split) (zoomin zoomout) (preview panel)])-->
+            <div class="col-md mt-5" id="centerPanel">
+              <div class="row"> <!--heatmap buttons-->
+                  <!--
+                  <div class="btn-toolbar btn-sm" id="model_panel_loadSave">
+                    <div class="input-group">
+
+                      <div class="custom-file">
+                        <input type="file" id="importGraph" name="importJSONGraph01" class="custom-file-input" onchange="loadFile(event);" aria-describedby="importJSONGraph01Addon">
+                        <label class="custom-file-label" for="importJSONGraph01Addon">Import/Export Model Files</label>
+                      </div>
+
+                      <div class="input-group-append">
+                        <button type="button" class="btn btn-sm btn-dark" id="exportGraph" onclick="exprtGraph(1);"> Export </button>
+                        <button type="button" class="btn btn-sm btn-dark" id="savePicture" onclick="savePicture();"> Picture </button>
+                        <button type="button" class="btn btn-sm btn-dark" id="tabView" onclick="bagOfWords();tabularView();"> Tabular Output </button>
+                      </div>
+
+                    </div>
+                  </div>
+                  -->
+
+                <div style="margin: 15px;"><!--heatmap Label-->
+                  <div class="row" style="height: 16px;"></div>
+                  <label for="heatmap" class="row py-2 mr-sm-1">
+                      Heat map Selection:
+                  </label>
+                </div>
+                <div style="margin: 15px;"><!--heatmap select + help-->
+                    <div class="row" style="height: 16px;"> <!--heatmap help-->
+                      <div class="col-lg" id="heatmapheader"></div>
+                      <div class=" btn-primary" id="heatmaphelp"><a href="documentation_furtherInstruction.html#heatMap" target="_blank" id="helpLink">Help</a></div>
+                    </div>
+                    <div class="row">  <!--heatmap Off-->
+                        <form class="form-inline px-0">
+                          <select id="heatmap" class="custom-select mb-1" name="heatmap" onchange="AHAB.Heatmap.colorGraph();">
+                          <option value="off">Heat map Off</option>
+                          <option value="3">Ambiguity Type</option>
+                          <option value="0">Implementability</option>
+                          <option value="1">Intentionality</option>
+                          <option value="2">Severity</option>
+                          <option value="4">Perspectives</option>
+                          <option value="5">Legal Text</option>
+                          </select>
+                        </form>
+                    </div>
+                </div>
+              </div>
+
+              <div class="row"> <!--Input Read only-->
+                  <div class="col-sm"> <!--needed so that "input read only" stays in the middle of page-->
+                    <!--
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" value="" id="destructiveImport">
+                      <label class="form-check-label" for="destructiveImport"> Import/Clear Current Model </label>
+                    </div>
+                    -->
+                  </div>
+                  <div class="col-sm">
+                  <div class="form-check">
+                  <input type="checkbox" class="form-check-input" value="" id="editReadOnlyMode">
+                  <label class="form-check-label" for="editReadOnlyMode"> Input Read Only </label>
+                  </div>
+                  </div>
+              </div>
+
+              <div class="col" id="threeButton"> <!--three button(Add user)-->
+                  <div class="row">
+                    <div class="col-sm-2" id="threeButtonclosebox">X</div>
+                    <div class="col" id="threeButtonheader">Click here to move</div>
+                    <div class=" btn-primary" id="helpButton"><a href="documentation.html#AddUser" target="_blank" id="helpLink">Help</a></div>
+                  </div>
+                  <div class="row">
+                    <div id="threeButtonInfo" class="btn btn-secondary disabled">Perspectives:</div>
+
+                    <!--onclick="myAlertBox();"-->
+                    <div class="btn btn-primary btn-sm" id="addPerspective" active>Add user</div>
+                    <div class="btn-group btn-group-sm btn-group-toggle" data-toggle="buttons" id="perspective" name="perspective" onchange="AHAB.Heatmap.colorGraph();">
+                      <label class="btn btn-dark btn-sm"><input type="radio" name="perspective" value="default" checked>default</label>
+                    </div>
+                  </div>
+              </div>
+
+
+              <div class="row"> <!--(canvas, merge split) (zoomin zoomout) (preview panel)-->
+                <div class="col-lg-auto">
+                  <div id="paper_container">
+                    <div class="row"> <!--canvas/paperBox merge split etc.-->
+                      <div class="wrapper" id="paperBox">
+                        <div id="draggable" width="0" height="0"> <!--split-->
+                          <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
+                          <div class="col-sm" id="draggableclosebox">X</div>
+                          <div class="col-sm-auto" id="draggableheader">Click here to move</div>
+                          <div id="dragInfo"> Move </div>
+                          <div class="btn btn-dark btn-sm" id="split">Split</div>
+                        </div>
+                        <div id="comparable" width="0" height="0"><!--Merge-->
+                          <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
+                          <div class="col-sm" id="comparableclosebox">X</div>
+                          <div class="col-lg-auto" id="comparableheader">Click here to move</div>
+                          <div id="comparableInfo"> Move </div>
+                          <div class="btn btn-dark btn-sm" id="mergeAmbiguity" style="display:none">Merge</div>
+                        </div>
+                        <div class="paper" id="paper-multiple-papers"></div><!--canvas-->
+                        <div id="floatingLegend">
+                          <div id="floatingLegendheader">Click here to move Legend</div>
+                          <canvas id="heatmap_legend" name="heatmap_legend" class="heatmap_legend">Your browser does not support the HTML5 canvas tag.</canvas>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row"> <!--zoom in zoom out-->
+                      <div class="col">
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-sm btn-dark" id="zoom" onclick="scalePaper('in');">Zoom In<img src="img/outline_zoom_in_white_48dp.png"></img></button>
+                          <button type="button" class="btn btn-sm btn-dark" id="zoom" onclick="scalePaper('reset');">Reset<img src="img/outline_youtube_searched_for_white_48dp.png"> </img></button>
+                          <button type="button" class="btn btn-sm btn-dark" id="zoom" onclick="scalePaper('out');">Zoom Out<img src="img/outline_zoom_out_white_48dp.png"></img></button>
+                          <form class="form-inline" id="canvasColor">
+                            <select id="canvasClr" class="custom-select my-1 mr-sm-2" name="canvasClr" onchange="canvasColor();">
+                              <option value="">Canvas Color</option>
+                              <option value="gray">Gray</option>
+                              <option value="white">White</option>
+                              <option value="lightgray">Light Gray</option>
+                              <option value="green">Green</option>
+                              <option value="blue">Blue</option>
+                              <option value="lightblue">Light Blue</option>
+                              <option value="black">Black</option>
+                            </select>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row"> <!--preview panel-->
+                      <div id="preview_panel" class="preview_panel">
+                        <div class="paper" id="paper-multiple-papers-small"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+
+            <!--(shapebox) (floatingModelPanel/ Attributes)-->
+            <div class="col-md mt-4" id="modelingPalette">
+              <!--<button class="btn btn-sm btn-dark" type="button" aria-expanded="false" data-toggle="collapse" data-target="#modelCollapsePanel" onclick="redrawCanvas();">Model Panel</button>
+              <div class="collapse" id="modelCollapsePanel">-->
+                <div id="shapesBox" class="rounded"> <!-- class="row"> -->
+                  <div class="col-md">
+                    <div class="row">
+                      <div id="shapesBoxclosebox">X</div>
+                      <div class= "col" id="shapesBoxheader">Click here to move</div>
+                      <div class= "btn-primary" id="helpButton"><a href="documentation.html#ModelingShapePanel" target="_blank" id="helpLink">Help</a></div>
+                    </div>
+                    <div class="row">
+                      <h2>Modeling Shapes</h2>
+                    </div>
+                    <div class="row" style="text-align: center;">
+                      <div id="graphthinger" value="" class="graphthinger"></div>
+
+                      <div class="stencilGraph" id="graph_stencil_panel" value="" style="margin-left: 8px;">
+                        <div class="paper" id="paper-stencil-panel" class="stencilGraphPaper"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div id="floatingModelPanel" class="rounded" > <!-- class="row"> -->
+                  <div class="col">
+                    <div class="row">
+                      <div  id="floatingModelPanelclosebox">X</div>
+                      <div class= "col" id="floatingModelPanelheader">Click here to move</div>
+                      <div class= "btn-primary" id="helpButton"><a href="documentation.html#AmbiguityAttributesPanel" target="_blank" id="helpLink">Help</a></div>
+                    </div>
+                    <div class="row">
+                      <table class="table-sm">
+                        <thead class="thead-dark">
+                          <tr>
+                            <th scope="col">Item</th>
+                            <th scope="col">Information</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th scope="row">Unique Artifact ID:</th>
+                            <td>
+                              <input type="text" id="linkedArti" class="textbox" name="linkedArti" value="UUID0" style="width: 140px;" disabled>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th scope="row">Regulatory Text ID:</th>
+                            <td>
+                              <input type="text" id="rgrtyTextID" class="textbox" name="rgrtyTextID" style="height:fit-content; width: 140px" value="Please add the legal reference ID...">
+                            </td>
+                          </tr>
+                          <!--<tr>
+                            <th scope="row">Perspectives:</th>
+                            <td>
+                              <div class="btn-group btn-group-sm btn-group-toggle" data-toggle="buttons" id="perspective" name="perspective" onchange="colorGraph();">
+
+
+                              </div>
+                            </td>
+                          </tr> -->
+                          <tr>
+                            <th scope="row">Regulatory Text: </th>
+                            <td>
+                              <textarea id="rgrtyText" class="textbox" name="rgrtyText" value="" style="width: 140px;">Please add regulatory text here...</textarea>
+                            </td>
+                          </tr>
+                          <!-- <tr>
+                            <th scope="row">Regulatory Text Reference:</th>
+                            <td>
+                              <div class="btn-group btn-group-sm btn-group-toggle" data-toggle="buttons" id="rgrtyTextRef" name="rgrtyTextRef" onchange="colorGraph();">
+                                <label class="btn btn-dark active"><input type="radio" name="rgrtyTextRef" value="Partial Phrase" checked>Partial Phrase</label>
+                                <label class="btn btn-dark"><input type="radio" name="rgrtyTextRef" value="Phrase">Phrase</label>
+                                <label class="btn btn-dark"><input type="radio" name="rgrtyTextRef" value="Sentence">Sentence</label>
+                                <label class="btn btn-dark"><input type="radio" name="rgrtyTextRef" value="Full Text">Full Text</label>
+                              </div>
+                            </td>
+                          </tr> -->
+
+                          <tr>
+                            <th scope="row">Ambiguity type:
+                              <a tabindex="0" role="button" class="" data-container="body" data-toggle="popover" data-html="true">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill" viewBox="0 0 16 16">
+                                  <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+                                </svg>
+                              </a>
+
+                            </th>
+                            <td>
+                              <div class="input-group mb-3">
+
+                                <!-- custom-select -->
+
+                          <select class=" btn-sm btn-dark" data-toggle="buttons" id="ambiguity" name="ambiguity" onchange="AHAB.Heatmap.colorGraph();" style="width: 140px;">
+                            <option class="btn btn-dark active" name="ambiguity" value="Lexical" selected>Lexical</option>
+                            <option class="btn btn-dark" name="ambiguity" value="Syntactic">Syntactic</option>
+                            <option class="btn btn-dark" name="ambiguity" value="Semantic">Semantic</option>
+                            <option class="btn btn-dark" name="ambiguity" value="Vagueness">Vagueness</option>
+                            <option class="btn btn-dark" name="ambiguity" value="Incompleteness">Incompleteness</option>
+                            <option class="btn btn-dark" name="ambiguity" value="Referential">Referential</option>
+                            <option class="btn btn-dark" name="ambiguity" value="Other">Other</option>
+                          </select>
+                              </div>
+                            </td>
+                          </tr>
+                          <!--<tr>
+                            <th scope="row">Ambiguity type:</th>
+                            <td>
+                              <div class="btn-group btn-group-sm btn-group-toggle" data-toggle="buttons" id="ambiguity" name="ambiguity" onchange="colorGraph();">
+                                <label class="btn btn-dark active"><input type="radio" name="ambiguity" value="Lexical" checked>Lexical</label>
+                                <label class="btn btn-dark"><input type="radio" name="ambiguity" value="Syntactic">Syntactic</label>
+                                <label class="btn btn-dark"><input type="radio" name="ambiguity" value="Semantic">Semantic</label>
+                                <label class="btn btn-dark"><input type="radio" name="ambiguity" value="Vagueness">Vagueness</label>
+                                <label class="btn btn-dark"><input type="radio" name="ambiguity" value="Incompleteness">Incompleteness</label>
+                                <label class="btn btn-dark"><input type="radio" name="ambiguity" value="Referential">Referential</label>
+                                <label class="btn btn-dark"><input type="radio" name="ambiguity" value="Other">Other</label>
+                              </div>
+                            </td>
+                          </tr>-->
+
+                          <tr>
+                            <th scope="row">Notes: </th>
+                            <td>
+                              <textarea id="notesText" class="textbox" name="notesText" value="" style="width: 140px;">Please add any notes here...</textarea>
+                            </td>
+                          </tr>
+                          <tr>
+                          <th scope="row">Severity:</th>
+                          <td>
+                            <div class="btn-group btn-group-sm btn-group-toggle" data-toggle="buttons" id="severity" name="severity" onchange="AHAB.Heatmap.colorGraph();" style="width: 140px;">
+                              <label class="btn btn-dark active"><input type="radio" name="severity" value="1" checked>1</label>
+                              <label class="btn btn-dark"><input type="radio" name="severity" value="2">2</label>
+                              <label class="btn btn-dark"><input type="radio" name="severity" value="3">3</label>
+                              <label class="btn btn-dark"><input type="radio" name="severity" value="4">4</label>
+                              <label class="btn btn-dark"><input type="radio" name="severity" value="5">5</label>
+                            </div>
+                          </td>
+                          </tr>
+                          <tr>
+                            <th scope="row">Intentionality:</th>
+                            <td>
+                              <div class="btn-group btn-group-sm btn-group-toggle" data-toggle="buttons" id="intentionality" name="intentionality" onchange="AHAB.Heatmap.colorGraph();" style="width: 140px;">
+                                <label class="btn btn-dark active"><input type="radio" name="intentionality" value="y" checked>yes</label>
+                                <label class="btn btn-dark"><input type="radio" name="intentionality" value="n">no</label>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th scope="row">Implementability:</th>
+                            <td>
+                              <div class="btn-group btn-group-sm btn-group-toggle" data-toggle="buttons" id="implementability" name="implementability" onchange="AHAB.Heatmap.colorGraph();" style="width: 140px;">
+                                <label class="btn btn-dark active"><input type="radio" name="implementability" value="y" checked>yes</label>
+                                <label class="btn btn-dark"><input type="radio" name="implementability" value="n">no</label>
+                              </div>
+                            </td>
+                          </tr>
+                          <!-- <tr>
+                          <th scope="col"><i>For Links Only</i> Link Weight: </th>
+                          <td>
+                            <input type="text" id="linkWeight" class="textbox" name="linkWeight" value="Please add the value for the link...">
+                          </td>
+                          </tr> -->
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+
+              <!--</div>-->
+            </div>
+          </div>
+        </div>
+      </main>
+      <div class="col-xl-4 bd-sidebar"></div> <!--right sidebar-->
+    </div>
+  </div>
+  <!-- Footer Removed for remaining anonymous-->
+  <!--<footer>
+    <div class="row">
+      <div class="mx-auto">Created by: Aaron Massey et al.</div>
+    </div>
+  </footer>-->
+  <!-- ================ Templates ================================================ -->
+
+  <script type="text/template" id="ambiguity-template">
+    <div class="view">
+      <fieldset>
+        <legend>Ambiguity</legend> <b>UUID:</b> <label for="uuid"><%- uuid %></label> <input name="uuid" id="uuid" class="edit" value="<%- uuid %>"><br>
+        <b>Ambiguity Type:</b> <label for="ambiguityType"><%- ambiguityType %></label> <input id="ambiguityType" name="ambiguityType" class="edit" value="<%- ambiguityType %>"><br>
+        <b>Severity:</b> <label for="severity"><%- severity %></label> <input id="severity" name="severity" class="edit" value="<%- severity %>"><br>
+        <b>Implementability:</b> <label for="implementability"><%- implementability %></label> <input id="implementability" name="implementability" class="edit" value="<%- implementability %>"><br>
+        <b>Intentionality:</b> <label for="intentionality"><%- intentionality %></label> <input id="intentionality" name="intentionality" class="edit" value="<%- intentionality %>"><br>
+        <b>Regulatory Text:</b> <label for="regulatoryText"><%- regulatoryText %></label> <input id="regulatoryText" name="regulatoryText" class="edit" value="<%- regulatoryText %>"><br>
+        <b>Regulatory Text Reference:</b> <label for="regulatoryTextRef"><%- regulatoryTextRef %></label> <input id="regulatoryTextRef" name="regulatoryTextRef" class="edit" value="<%- regulatoryTextRef %>"><br>
+        <b>Regulatory Text Id:</b> <label for="regulatoryID"><%- regulatoryID %></label> <input id="regulatoryID" name="regulatoryID" class="edit" value="<%- regulatoryID %>"><br>
+        <b>Notes:</b> <label for="notesText"><%- notesText %></label> <input id="notesText" name="notesText" class="edit" value="<%- notesText %>"><br>
+      </fieldset>
+      <button class="destroy">remove</button>
+    </div>
+  </script>
+
+
+  <!-- Scripts -->
+ <!--next two lines added for autocompelete widget for legaltext-->
+
+ <script src="documentation/js/jquery/jquery-ui-1.13.0.custom/external/jquery/jquery.js"></script>
+ <script src="documentation/js/jquery/jquery-ui-1.13.0.custom/jquery-ui.js"></script>
+<!--
+<script src="node_modules/jquery/dist/jquery.js"></script>
+<script src="node_modules/jquery-ui-dist/jquery-ui.min.js"></script>
+-->
+<script src="node_modules/html2canvas/dist/html2canvas.min.js"></script>
+<script src="node_modules/downloadjs/download.min.js"></script>
+<script src="node_modules/lodash/lodash.min.js"></script>
+<script src="node_modules/backbone/backbone-min.js"></script>
+<script src="node_modules/jointjs/dist/joint.js"></script>
+<script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="node_modules/backbone.localstorage/build/backbone.localStorage.min.js"></script>
+<script src="node_modules/graphlib/dist/graphlib.min.js"></script>
+<script src="node_modules/dagre/dist/dagre.min.js"></script>
+<script src="js/legacy/objectRead.js"></script>
+<script src="js/ahab/Main.js"></script>
+<script src="js/ahab/Helpers.js"></script>
+<script src="js/ahab/Models.js"></script>
+<script src="js/ahab/Features.js"></script>
+<script src="js/ahab/drag.js"></script>
+<script src="js/ahab/StencilPanel.js"></script>
+<script src="js/ahab/JointJSWrapper.js"></script>
+<script src="js/ahab/ModelController.js"></script>
+<script src="js/ahab/FileHandler.js"></script>
+<script src="js/ahab/Events.js"></script>
+<script src="js/ahab/Tools.js"></script>
+<script src="js/ahab/LegalTextPanel.js"></script>
+<script src="js/ahab/Heatmap.js"></script>
+<script src="js/ahab/Exporter.js"></script>
+<script src="js/ahab/Log.js"></script>
+<script src="js/ahab/Highlight.js"></script>
+
+
+<script>
+$("[data-toggle=tooltip").tooltip();
+
+//to have html content in our popover
+  var showPopover = function () {
+      $(this).popover('show');
+  }
+  , hidePopover = function () {
+      $(this).popover('hide');
+  };
+
+
+  $('[data-toggle="popover"]').popover({
+    //title: "<h5></h5>",
+    container: 'body',
+    content: function () {
+        var resultData = $(`
+                    <table class="table table-bordered rounded" style="font-size: 11px; width:420px; margin: auto; z-index:12;">
+                      <thead>
+                        <tr>
+                          <th scope="col" class="w-25">Ambiguity Type</th>
+                          <th scope="col" class="w-50">Definition</th>
+                          <th scope="col" class="w-25">Example</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row" class="w-25">Lexical</th>
+                          <td class="w-50">A word or phrase with multiple valid meanings</td>
+                          <td class="w-25">Melissa walked to the bank.</td>
+                        </tr>
+                        <tr>
+                          <th scope="row" class="w-25">Syntactic</th>
+                          <td class="w-50">A sequence of words with multiple valid grammatical interpretations regardless of context</td>
+                          <td class="w-25">Quickly read and discuss this tutorial.</td>
+                        </tr>
+                        <tr>
+                          <th scope="row" class="w-25">Semantic</th>
+                          <td class="w-50">A sentence with more than one interpretation in its provided context</td>
+                          <td class="w-25">Fred and Ethel are married.</td>
+                        </tr>
+                        <tr>
+                          <th scope="row" class="w-25">Vagueness</th>
+                          <td class="w-50">A statement that admits borderline cases or relative interpretation</td>
+                          <td class="w-25">Fred is tall.</td>
+                        </tr>
+                        <tr>
+                          <th scope="row" class="w-25">Incompleteness</th>
+                          <td class="w-50">A grammatically correct sentence that provides too little detail to convey a specific or needed meaning</td>
+                          <td class="w-25">Combine flour, eggs, and salt to make fresh pasta.</td>
+                        </tr>
+                        <tr>
+                          <th scope="row" class="w-25">Referential</th>
+                          <td class="w-50">A grammatically correct sentence with a reference that confuses the reader based on the context</td>
+                          <td class="w-25">The boy told his father about the damage. He was very upset.</td>
+                        </tr>
+                        <tr>
+                          <th scope="row" class="w-25">Other</th>
+                          <td class="w-50">If the ambiguity doesn't seem to belong to any of the top categories.</td>
+                          <td class="w-25"></td>
+                        </tr>
+                      </tbody>
+                    </table>`
+                  );
+        return resultData;
+      },
+    trigger: 'manual'
+  })
+  .focus(showPopover)
+  .blur(hidePopover)
+  .click(showPopover, hidePopover);
+  //.hover(showPopover, hidePopover);
+
+/*$(document).on("click", "#funcid", function () {
+    $(this).parents(".popover").popover('hide');
+});*/
+  //for the ambiguity type popover to work:
+  var popoverTriggerList= [].slice.call(document.querySelectorAll('[data-toggle="popover"]'));
+  var popoverList = popoverTriggerList.map(function(popoverTrigger){
+    return new bootstrap.Popover(popoverTrigger);
+  });
+</script>
+
+<script type="text/javascript">// to call the main function from js/ahab/main.js that draws the canvas
+  window.onload = main(1000, 700);
+</script>
+
+</body>
+</html>
